@@ -10,42 +10,27 @@ const Input = styled.input`
 `;
 
 function App() {
-  const [texto, setTexto] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleInput = e => {
-    setTexto(e.target.value);
-  };
-  const handleEmailInput = e => {
-    setEmail(e.target.value);
-  };
-
-  const handleButton = e => {
-    alert(email + " - " + password);
-  };
-
+  const [isLogged, setIsLogged] = useState(false);
   return (
     <>
-      <Input type="text" value={texto} onChange={handleInput} />
-      <p>{texto}</p>
-      <p>{texto.length} caracteres</p>
-
       <Input
         placeholder="Digite um e-mail"
         type="email"
         value={email}
-        onChange={handleEmailInput}
+        onChange={e => setEmail(e.target.value)}
       />
 
-      <Input
-        placeholder="Digite uma senha"
-        type="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
+      {email.length > 0 && (
+        <>
+          <p>
+            {email.length} caractere{email.length !== 1 ? "s" : ""}
+          </p>
+          <p>Algo a mais</p>
+        </>
+      )}
 
-      <button onClick={handleButton}>Dizer</button>
+      {isLogged ? <button>Sair</button> : <button>Fazer Login</button>}
     </>
   );
 }
