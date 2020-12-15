@@ -12,8 +12,11 @@ const InputText = styled.input`
 function SearchBox(props) {
   const [texto, setTexto] = useState("");
 
-  if (props.onChangeText) {
-    props.onChangeText(texto);
+  function handleKeyUp(e) {
+    if (e.keyCode === 13) {
+      props.onEnter && props.onEnter(texto);
+      setTexto("");
+    }
   }
 
   return (
@@ -21,6 +24,7 @@ function SearchBox(props) {
       type="text"
       value={texto}
       onChange={e => setTexto(e.target.value)}
+      onKeyUp={handleKeyUp}
       placeholder={props.frasePadrao ?? "Digite Alguma coisa"}
     />
   );

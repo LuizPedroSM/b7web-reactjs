@@ -14,14 +14,20 @@ function App() {
     ]);
   }, []);
 
+  function addAction(newItem) {
+    setList([
+      ...list,
+      {
+        title: newItem,
+        done: false
+      }
+    ]);
+  }
+
   return (
     <>
       <h1>Lista de Tarefas</h1>
-      <SearchBox
-        frasePadrao="Faça sua busca.."
-        onChangeText={t => setSearchText(t)}
-      />
-
+      <SearchBox frasePadrao="Adicione um item" onEnter={addAction} />
       <hr />
       <ul>
         {list.map((item, index) => (
