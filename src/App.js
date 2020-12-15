@@ -1,19 +1,15 @@
 import React from "react";
-
-function BemVindo(props) {
-  return (
-    <h1>
-      Olá, {props.nome}! Você tem {props.idade} anos.
-    </h1>
-  );
-}
-
+import "./App.css";
 function Avatar(props) {
   return (
-    <div>
+    <div className="avatar">
       <img src={props.url} alt={props.name} />
       <br />
-      <span>{props.name}</span>
+      <span
+        style={{ color: "#f00", fontSize: 20, textDecoration: "underline" }}
+      >
+        {props.name}
+      </span>
     </div>
   );
 }
@@ -25,10 +21,6 @@ function App() {
 
   return (
     <>
-      <BemVindo nome="Bonieky" idade="90" />
-      <BemVindo nome="Pedro" idade="30" />
-      <BemVindo nome="Aline" idade="120" />
-
       <Avatar url={user.url} name={user.name} />
     </>
   );
