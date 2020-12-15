@@ -4,6 +4,15 @@ import SearchBox from "./components/SearchBox";
 
 function App() {
   const [searchText, setSearchText] = useState("");
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    setList([
+      { id: 123, title: "Comprar o bolo", done: false },
+      { id: 124, title: "pegar o cachorro no PetShop", done: true },
+      { id: 125, title: "Gravar a aula", done: false }
+    ]);
+  }, []);
 
   return (
     <>
@@ -12,9 +21,15 @@ function App() {
         frasePadrao="Faça sua busca.."
         onChangeText={t => setSearchText(t)}
       />
-      <SearchBox frasePadrao={searchText} />
+
       <hr />
-      Texto procurado:{searchText}
+      <ul>
+        {list.map((item, index) => (
+          <li key={index}>
+            {item.done ? <del>{item.title}</del> : item.title}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
