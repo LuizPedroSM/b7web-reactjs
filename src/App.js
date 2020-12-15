@@ -4,15 +4,13 @@ import SearchBox from "./components/SearchBox";
 
 function App() {
   const [searchText, setSearchText] = useState("");
-  function handleSearchInput(novoTexto) {
-    setSearchText(novoTexto);
-  }
+
   return (
     <>
       <h1>Lista de Tarefas</h1>
       <SearchBox
         frasePadrao="Faça sua busca.."
-        onChangeText={handleSearchInput}
+        onChangeText={t => setSearchText(t)}
       />
       <SearchBox frasePadrao={searchText} />
       <hr />

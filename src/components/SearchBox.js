@@ -12,11 +12,9 @@ const InputText = styled.input`
 function SearchBox(props) {
   const [texto, setTexto] = useState("");
 
-  useEffect(() => {
-    if (props.onChangeText) {
-      props.onChangeText(texto);
-    }
-  }, [texto]);
+  if (props.onChangeText) {
+    props.onChangeText(texto);
+  }
 
   return (
     <InputText
