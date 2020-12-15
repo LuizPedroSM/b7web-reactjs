@@ -1,28 +1,28 @@
 import React from "react";
-import "./App.css";
-function Avatar(props) {
-  return (
-    <div className="avatar">
-      <img src={props.url} alt={props.name} />
-      <br />
-      <span
-        style={{ color: "#f00", fontSize: 20, textDecoration: "underline" }}
-      >
-        {props.name}
-      </span>
-    </div>
-  );
-}
-function App() {
-  let user = {
-    url: "https://www.google.com/logos/google.jpg",
-    name: "Bonieky"
-  };
+import styled from "styled-components";
 
+const Site = styled.div`
+  width: 400px;
+  height: 400px;
+  background-color: #00ff00;
+`;
+
+const Title = styled.h1`
+  color: #ff0000;
+  font-size: 18px;
+`;
+
+const Botao = styled.button`
+  font-size: 19px;
+  padding: 10px 15px;
+`;
+
+function App() {
   return (
-    <>
-      <Avatar url={user.url} name={user.name} />
-    </>
+    <Site>
+      <Title>Titulo</Title>
+      <Botao>Clique aqui</Botao>
+    </Site>
   );
 }
 
