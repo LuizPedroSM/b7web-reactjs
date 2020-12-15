@@ -1,20 +1,35 @@
 import React from "react";
 
-function formatarNome(usuario) {
-  return usuario.nome + " " + usuario.sobreNome;
+function BemVindo(props) {
+  return (
+    <h1>
+      Olá, {props.nome}! Você tem {props.idade} anos.
+    </h1>
+  );
+}
+
+function Avatar(props) {
+  return (
+    <div>
+      <img src={props.url} alt={props.name} />
+      <br />
+      <span>{props.name}</span>
+    </div>
+  );
 }
 function App() {
-  let usuario = {
-    nome: "Bonieky",
-    sobreNome: "Lacerda"
+  let user = {
+    url: "https://www.google.com/logos/google.jpg",
+    name: "Bonieky"
   };
-
-  let imagem = "https://www.google.com/logos/google.jpg";
 
   return (
     <>
-      <div>Meu nome é {formatarNome(usuario)}</div>
-      <img src={imagem} alt="Logo do Google" style={{ width: 200 }} />
+      <BemVindo nome="Bonieky" idade="90" />
+      <BemVindo nome="Pedro" idade="30" />
+      <BemVindo nome="Aline" idade="120" />
+
+      <Avatar url={user.url} name={user.name} />
     </>
   );
 }
