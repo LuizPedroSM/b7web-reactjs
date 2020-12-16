@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import Categoria from "./pages/Categoria";
 import Home from "./pages/Home";
 import Sobre from "./pages/Sobre";
 
@@ -16,6 +17,15 @@ function App() {
             <li>
               <Link to="/sobre">Sobre</Link>
             </li>
+            <li>
+              <Link to="/categoria/esportes">Esportes</Link>
+            </li>
+            <li>
+              <Link to="/categoria/noticias">Noticias</Link>
+            </li>
+            <li>
+              <Link to="/categoria/viagem">Viagem</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -26,6 +36,9 @@ function App() {
         </Route>
         <Route path="/sobre">
           <Sobre />
+        </Route>
+        <Route path="/categoria/:cat">
+          <Categoria />
         </Route>
       </Switch>
       <hr />
