@@ -40,6 +40,9 @@ function App() {
         <Route path="/categoria">
           <Categoria />
         </Route>
+        <Route path="*">
+          <h2>Página Não Encontrada</h2>
+        </Route>
       </Switch>
       <hr />
       <footer>Todos os Direitos reservados</footer>
