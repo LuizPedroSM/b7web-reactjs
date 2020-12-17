@@ -1,27 +1,36 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-function Home(props) {
+function Home() {
   let history = useHistory();
+  const dispatch = useDispatch();
+
+  const name = useSelector(state => state.usuario.name);
+  const contador = useSelector(state => state.usuario.contador);
 
   const handleButton = () => {
     history.replace("/sobre");
   };
 
   const handleBonikey = () => {
-    props.setName("Bonieky");
+    dispatch({
+      type: "SET_NAME",
+      payload: { name: "Bonieky" }
+    });
   };
 
   const handleIncrement = () => {
-    props.increment();
+    dispatch({
+      type: "INCREMENT_CONTADOR"
+    });
   };
 
   return (
     <div>
       <h4>Página Home</h4>
-      Nome: {props.name} <br />
-      Contador: {props.contador} <br />
+      Nome: {name} <br />
+      Contador: {contador} <br />
       <button onClick={handleBonikey}>Setar nome para Bonieky</button>
       <button onClick={handleIncrement}>+1</button>
       <br />
@@ -31,19 +40,4 @@ function Home(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    name: state.usuario.name,
-    contador: state.usuario.contador
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setName: newName =>
-      dispatch({ type: "SET_NAME", payload: { name: newName } }),
-    increment: () => dispatch({ type: "INCREMENT_CONTADOR" })
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
